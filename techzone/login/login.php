@@ -39,15 +39,15 @@ require_once __DIR__ . "/../includes/header.php";
 
         <form method="POST">
             <label>E-mail</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" autocomplete="off" required>
 
             <label>Senha</label>
-            <input type="password" name="senha" required>
+            <input type="password" name="senha" autocomplete="new-password" required>
 
             <button class="btn" type="submit">Entrar</button>
         </form>
 
-        <p>Não possui conta? <a href="cadastro.php">Cadastre-se</a></p>
+        <p class="auth-switch">Não possui conta? <a href="cadastro.php">Cadastre-se</a></p>
     </div>
 </section>
 <?php require_once __DIR__ . "/../includes/footer.php"; ?>

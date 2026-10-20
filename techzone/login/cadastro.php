@@ -50,16 +50,16 @@ require_once __DIR__ . "/../includes/header.php";
 
         <form method="POST">
             <label>Nome</label>
-            <input type="text" name="nome" required>
+            <input type="text" name="nome" autocomplete="off" required>
 
             <label>E-mail</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" autocomplete="off" required>
 
             <label>Senha</label>
-            <input type="password" name="senha" required>
+            <input type="password" name="senha" autocomplete="new-password" required>
 
             <label>Confirmar senha</label>
-            <input type="password" name="confirmar" required>
+            <input type="password" name="confirmar" autocomplete="new-password" required>
 
             <button class="btn" type="submit">Cadastrar</button>
         </form>
