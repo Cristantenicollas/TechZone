@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PokéWorld — Explore o universo Pokémon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="top" id="top">
+<a class="logo" href="#inicio"><i></i><b>Poké</b>World</a>
+<nav><a class="active" href="#inicio">Início</a><a href="#pokedex">Pokédex</a><a href="#tipos">Tipos</a><a href="#regioes">Regiões</a><a href="#galeria">Galeria</a><a href="#sobre">Sobre</a></nav>
+<div class="actions"><button id="themeBtn">☾</button><button id="menuBtn">☰</button><button id="communityBtn" class="community">Comunidade ↗</button></div>
+</header>
+<aside id="mobileMenu"><button id="closeMenu">×</button><a href="#inicio">Início</a><a href="#pokedex">Pokédex</a><a href="#tipos">Tipos</a><a href="#regioes">Regiões</a><a href="#galeria">Galeria</a><a href="#sobre">Sobre</a></aside>
+
+<main>
+<section class="hero section" id="inicio">
+<div><small class="eyebrow">⚡ ENCICLOPÉDIA DIGITAL POKÉMON</small><h1>Explore.<br><em>Descubra.</em><br>Seja um Mestre.</h1>
+<p>Uma Pokédex moderna e interativa para pesquisar Pokémon, descobrir tipos, conhecer regiões e explorar uma coleção de imagens.</p>
+<div class="heroBtns"><a class="btn red" href="#pokedex">Explorar Pokédex →</a><button class="btn glass" id="randomBtn">Pokémon aleatório ✦</button></div>
+<div class="stats"><b>1025+<small>Pokémon</small></b><b>18<small>Tipos</small></b><b>9<small>Regiões</small></b></div></div>
+<div class="heroArt"><div class="orb"></div><img class="char" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" alt="Charizard"><img class="pika" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu"><label class="float a">⚡ <b>Pikachu</b><small>Elétrico</small></label><label class="float b">🔥 <b>Charizard</b><small>Fogo / Voador</small></label></div>
+</section>
+
+<section class="section searchPanel"><div><small class="eyebrow">PESQUISA RÁPIDA</small><h2>Qual Pokémon você procura?</h2></div><div class="search"><input id="searchInput" placeholder="Nome ou número do Pokémon..." autocomplete="off"><button id="searchBtn">Pesquisar →</button><div id="searchResults"></div></div></section>
+
+<section class="section" id="destaques"><div class="head"><div><small class="eyebrow">EM DESTAQUE</small><h2>Comece sua jornada</h2></div><a href="#pokedex">Ver todos →</a></div>
+<div class="featured">
+<article><div><small>#025</small><h3>Pikachu</h3><p>O elétrico mais famoso da Pokédex.</p><button onclick="openPokemon(25)">Ver perfil →</button></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu"></article>
+<article><div><small>#006</small><h3>Charizard</h3><p>Um clássico poderoso de Fogo e Voador.</p><button onclick="openPokemon(6)">Ver perfil →</button></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" alt="Charizard"></article>
+<article><div><small>#448</small><h3>Lucario</h3><p>Velocidade, aura e muita personalidade.</p><button onclick="openPokemon(448)">Ver perfil →</button></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png" alt="Lucario"></article>
+</div></section>
+
+<section class="section" id="pokedex"><div class="head"><div><small class="eyebrow">DATABASE</small><h2>Pokédex interativa</h2><p>Use os tipos para filtrar os resultados.</p></div><div class="progress"><span>Pokédex explorada <b id="dexPercent">15%</b></span><i><b id="dexBar"></b></i></div></div>
+<div class="toolbar"><b id="resultLabel">Todos os Pokémon</b><button id="clearFilter">Limpar filtro ×</button></div><div class="grid" id="pokemonGrid"></div>
+<div class="pagination"><button id="prevPage">← Anterior</button><span id="pageInfo">Página 1</span><button id="nextPage">Próxima →</button></div></section>
+
+<section class="section" id="tipos"><div class="head"><div><small class="eyebrow">ELEMENTOS</small><h2>Escolha seu tipo</h2><p>Explore os 18 tipos principais.</p></div></div><div class="types" id="typeFilters"></div></section>
+
+<section class="section" id="regioes"><div class="head"><div><small class="eyebrow">MUNDO POKÉMON</small><h2>Viaje pelas regiões</h2></div></div><div class="regions">
+<article><span>00</span><div><h3>Kanto</h3><p>Onde tudo começou.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png" alt="Kanto"></article><article><span>01</span><div><h3>Johto</h3><p>Tradição e mistério.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/249.png" alt="Johto"></article><article><span>02</span><div><h3>Hoenn</h3><p>Mar, céu e aventura.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Hoenn"></article><article><span>03</span><div><h3>Sinnoh</h3><p>Uma região lendária.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/483.png" alt="Sinnoh"></article><article><span>04</span><div><h3>Unova</h3><p>Uma nova perspectiva.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/643.png" alt="Unova"></article><article><span>05</span><div><h3>Kalos</h3><p>Elegância e poder.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/716.png" alt="Kalos"></article><article><span>06</span><div><h3>Alola</h3><p>Ilhas e novas formas.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/791.png" alt="Alola"></article><article><span>07</span><div><h3>Galar</h3><p>Estádios e batalhas.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/888.png" alt="Galar"></article><article><span>08</span><div><h3>Paldea</h3><p>Um mundo aberto.</p></div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1000.png" alt="Paldea"></article>
+</div></section>
+
+<section class="section" id="galeria"><div class="head"><div><small class="eyebrow">GALERIA</small><h2>Uma coleção de aventuras</h2></div></div><div class="gallery">
+<figure><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png" alt="Dragonite"><figcaption><b>Dragonite</b><small>Dragão / Voador</small></figcaption></figure><figure><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png" alt="Gengar"><figcaption><b>Gengar</b><small>Fantasma / Veneno</small></figcaption></figure><figure><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png" alt="Umbreon"><figcaption><b>Umbreon</b><small>Sombrio</small></figcaption></figure><figure><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/700.png" alt="Sylveon"><figcaption><b>Sylveon</b><small>Fada</small></figcaption></figure><figure><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png" alt="Gardevoir"><figcaption><b>Gardevoir</b><small>Psíquico / Fada</small></figcaption></figure><figure><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Rayquaza"><figcaption><b>Rayquaza</b><small>Dragão / Voador</small></figcaption></figure><figure><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/249.png" alt="Lugia"><figcaption><b>Lugia</b><small>Psíquico / Voador</small></figcaption></figure><figure><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png" alt="Lucario"><figcaption><b>Lucario</b><small>Lutador / Aço</small></figcaption></figure>
+</div></section>
+
+<section class="section" id="sobre"><div class="about"><div><small class="eyebrow">SOBRE O PROJETO</small><h2>Mais do que uma Pokédex.</h2><p>PokéWorld é um projeto de front-end desenvolvido para praticar HTML, CSS e JavaScript. Os dados e imagens da Pokédex são carregados dinamicamente pela PokéAPI.</p><div class="pills"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>PokéAPI</span></div></div><div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Rayquaza"></div></div></section>
+</main>
+<footer><a class="logo" href="#top"><i></i><b>Poké</b>World</a><p>Projeto educacional de front-end. Não é um produto oficial da The Pokémon Company.</p><a href="#top">Voltar ao topo ↑</a></footer>
+<div class="modal" id="pokemonModal"><div class="modalBox"><button id="modalClose">×</button><div id="modalContent"></div></div></div><div class="toast" id="toast"></div>
+<script src="./script.js"></script>
+</body></html>

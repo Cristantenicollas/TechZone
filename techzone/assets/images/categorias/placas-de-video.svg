@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ff4ff"/>
+      <stop offset="1" stop-color="#0090c8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- bracket de saida -->
+    <path d="M74 78v144" stroke-width="8"/>
+    <path d="M74 96H56M74 150H56M74 204H56"/>
+    <!-- corpo da placa -->
+    <rect x="74" y="92" width="270" height="116" rx="10" fill="#071827" fill-opacity=".85"/>
+    <!-- heatpipes topo -->
+    <path d="M96 92V74h180" opacity=".8"/>
+    <!-- fan esquerdo -->
+    <circle cx="146" cy="150" r="40"/>
+    <circle cx="146" cy="150" r="12"/>
+    <path d="M146 138c14-12 32-8 36 6M146 162c-14 12-32 8-36-6M158 150c12 14 8 32-6 36M134 150c-12-14-8-32 6-36"/>
+    <!-- fan direito -->
+    <circle cx="256" cy="150" r="40"/>
+    <circle cx="256" cy="150" r="12"/>
+    <path d="M256 138c14-12 32-8 36 6M256 162c-14 12-32 8-36-6M268 150c12 14 8 32-6 36M244 150c-12-14-8-32 6-36"/>
+    <!-- conector PCI-E -->
+    <path d="M120 208v18h140v-18" stroke-width="5"/>
+    <g stroke-width="4" opacity=".85">
+      <line x1="146" y1="208" x2="146" y2="226"/><line x1="172" y1="208" x2="172" y2="226"/>
+      <line x1="198" y1="208" x2="198" y2="226"/><line x1="224" y1="208" x2="224" y2="226"/>
+    </g>
+  </g>
+</svg>

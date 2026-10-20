@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ff4ff"/>
+      <stop offset="1" stop-color="#0090c8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- heatspreader -->
+    <rect x="72" y="96" width="256" height="86" rx="10" fill="#071827" fill-opacity=".85"/>
+    <!-- sulco do heatspreader -->
+    <path d="M92 116h216" stroke-width="4" opacity=".7"/>
+    <path d="M92 162h216" stroke-width="4" opacity=".7"/>
+    <!-- dentes do dissipador -->
+    <path d="M110 96v-14M146 96v-14M182 96v-14M218 96v-14M254 96v-14M290 96v-14" stroke-width="5" opacity=".85"/>
+    <!-- PCB -->
+    <path d="M84 182h232v20H84z" fill="#071827" fill-opacity=".9"/>
+    <!-- contatos -->
+    <g stroke-width="4">
+      <line x1="104" y1="186" x2="104" y2="198"/><line x1="124" y1="186" x2="124" y2="198"/>
+      <line x1="144" y1="186" x2="144" y2="198"/><line x1="164" y1="186" x2="164" y2="198"/>
+      <line x1="184" y1="186" x2="184" y2="198"/><line x1="204" y1="186" x2="204" y2="198"/>
+      <line x1="224" y1="186" x2="224" y2="198"/><line x1="244" y1="186" x2="244" y2="198"/>
+      <line x1="264" y1="186" x2="264" y2="198"/><line x1="284" y1="186" x2="284" y2="198"/>
+      <line x1="304" y1="186" x2="304" y2="198"/>
+    </g>
+    <!-- entalhe do trilho -->
+    <path d="M188 182v20" stroke-width="5"/>
+    <!-- chips no topo -->
+    <g stroke-width="4" opacity=".85">
+      <rect x="120" y="128" width="34" height="26" rx="4"/>
+      <rect x="186" y="128" width="34" height="26" rx="4"/>
+      <rect x="252" y="128" width="34" height="26" rx="4"/>
+    </g>
+  </g>
+</svg>

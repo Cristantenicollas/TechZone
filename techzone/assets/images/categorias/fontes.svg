@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ff4ff"/>
+      <stop offset="1" stop-color="#0090c8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- caixa da fonte -->
+    <rect x="72" y="80" width="180" height="140" rx="10" fill="#071827" fill-opacity=".85"/>
+    <!-- ventilador -->
+    <circle cx="162" cy="150" r="52"/>
+    <circle cx="162" cy="150" r="14"/>
+    <path d="M162 136c18-14 42-9 46 8M162 164c-18 14-42 9-46-8M176 150c14 18 9 42-8 46M148 150c-14-18-9-42 8-46"/>
+    <!-- grade -->
+    <circle cx="162" cy="150" r="66" stroke-width="4" opacity=".7"/>
+    <!-- etiqueta -->
+    <path d="M84 96h30" stroke-width="4" opacity=".8"/>
+    <!-- cabos -->
+    <path d="M252 112c34 0 44 14 44 32s10 30 44 30" stroke-width="5"/>
+    <path d="M252 150c34 0 44 10 44 24s10 26 44 26" stroke-width="5"/>
+    <path d="M252 186c28 0 38 8 38 20s8 22 38 22" stroke-width="5"/>
+    <!-- conector final -->
+    <path d="M334 166h20v16h-20" stroke-width="5"/>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ff4ff"/>
+      <stop offset="1" stop-color="#0090c8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- tela -->
+    <rect x="66" y="56" width="268" height="158" rx="12" fill="#071827" fill-opacity=".85"/>
+    <!-- area de exibicao -->
+    <path d="M84 74h232v122H84z" stroke-width="4" opacity=".7"/>
+    <!-- conteudo na tela -->
+    <path d="M104 168l44-52 36 40 30-34 58 46" stroke-width="5" opacity=".9"/>
+    <circle cx="264" cy="102" r="12" stroke-width="4" opacity=".8"/>
+    <!-- pescoco -->
+    <path d="M188 214v24M212 214v24"/>
+    <!-- base -->
+    <path d="M148 254h104" stroke-width="7"/>
+    <path d="M170 238h60l18 16H152z" stroke-width="5"/>
+    <!-- brilho -->
+    <path d="M66 200h268" stroke-width="4" opacity=".5"/>
+  </g>
+</svg>

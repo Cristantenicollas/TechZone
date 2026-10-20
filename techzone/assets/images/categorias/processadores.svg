@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ff4ff"/>
+      <stop offset="1" stop-color="#0090c8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)">
+    <!-- pins topo -->
+    <g stroke="url(#g)" stroke-width="5" stroke-linecap="round">
+      <line x1="150" y1="78" x2="150" y2="52"/><line x1="175" y1="78" x2="175" y2="52"/>
+      <line x1="200" y1="78" x2="200" y2="52"/><line x1="225" y1="78" x2="225" y2="52"/>
+      <line x1="250" y1="78" x2="250" y2="52"/>
+      <!-- pins base -->
+      <line x1="150" y1="222" x2="150" y2="248"/><line x1="175" y1="222" x2="175" y2="248"/>
+      <line x1="200" y1="222" x2="200" y2="248"/><line x1="225" y1="222" x2="225" y2="248"/>
+      <line x1="250" y1="222" x2="250" y2="248"/>
+      <!-- pins esquerda -->
+      <line x1="126" y1="120" x2="100" y2="120"/><line x1="126" y1="150" x2="100" y2="150"/>
+      <line x1="126" y1="180" x2="100" y2="180"/>
+      <!-- pins direita -->
+      <line x1="274" y1="120" x2="300" y2="120"/><line x1="274" y1="150" x2="300" y2="150"/>
+      <line x1="274" y1="180" x2="300" y2="180"/>
+    </g>
+    <!-- corpo do chip -->
+    <rect x="126" y="78" width="148" height="144" rx="14" fill="#071827" fill-opacity=".85" stroke="url(#g)" stroke-width="6"/>
+    <!-- nucleo -->
+    <rect x="160" y="112" width="80" height="76" rx="8" fill="#0d80ae" fill-opacity=".35" stroke="url(#g)" stroke-width="5"/>
+    <!-- cantos do chip -->
+    <path d="M144 96h14M144 96v14M256 96h-14M256 96v14M144 204h14M144 204v-14M256 204h-14M256 204v-14" stroke="url(#g)" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <!-- trilhas internas -->
+    <g stroke="url(#g)" stroke-width="4" stroke-linecap="round" fill="none" opacity=".85">
+      <path d="M200 112V96"/>
+      <path d="M200 188v16"/>
+      <path d="M160 150h-20"/>
+      <path d="M240 150h20"/>
+    </g>
+  </g>
+</svg>

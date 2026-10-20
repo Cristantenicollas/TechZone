@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ff4ff"/>
+      <stop offset="1" stop-color="#0090c8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- placa -->
+    <rect x="70" y="48" width="260" height="204" rx="12" fill="#071827" fill-opacity=".85"/>
+    <!-- socket CPU -->
+    <rect x="96" y="76" width="84" height="84" rx="8"/>
+    <rect x="114" y="94" width="48" height="48" rx="4" stroke-width="4" opacity=".8"/>
+    <!-- slots RAM -->
+    <rect x="206" y="72" width="14" height="96" rx="4"/>
+    <rect x="232" y="72" width="14" height="96" rx="4"/>
+    <rect x="258" y="72" width="14" height="96" rx="4"/>
+    <!-- chipset -->
+    <rect x="196" y="186" width="52" height="44" rx="6" stroke-width="4"/>
+    <path d="M206 196l32 24M238 196l-32 24" stroke-width="3" opacity=".7"/>
+    <!-- slots PCI -->
+    <g stroke-width="4">
+      <rect x="96" y="184" width="86" height="14" rx="4"/>
+      <rect x="96" y="212" width="86" height="14" rx="4"/>
+    </g>
+    <!-- capacitores / detalhes -->
+    <g stroke-width="4" opacity=".85">
+      <circle cx="304" cy="86" r="7"/>
+      <circle cx="304" cy="116" r="7"/>
+      <circle cx="304" cy="146" r="7"/>
+      <path d="M96 170h86"/>
+      <path d="M282 210h26M282 226h26"/>
+    </g>
+    <!-- trilhas -->
+    <g stroke-width="3" opacity=".6">
+      <path d="M180 118h26"/>
+      <path d="M180 146h26"/>
+      <path d="M248 168v18"/>
+      <path d="M146 160v12h50"/>
+    </g>
+  </g>
+</svg>

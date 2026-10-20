@@ -1,0 +1,979 @@
+/* ==========================================================================
+   TechZone — folha de estilo única
+   Organizada em seções:
+   1. Reset e variáveis
+   2. Base
+   3. Cabeçalho e navegação
+   4. Botões e etiquetas
+   5. Container, seções e cartões
+   6. Categorias
+   7. Formulários
+   8. Página de detalhe
+   9. Configurador de PC
+   10. Carrinho
+   11. Tabelas e painel administrativo
+   12. Rodapé
+   13. Responsivo
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Reset e variáveis
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #050b14;
+    --bg2: #091321;
+    --panel: #0b1625;
+    --panel2: #0e1d30;
+    --line: #1b3550;
+    --text: #f4f8ff;
+    --muted: #8fa5bb;
+    --blue: #168cff;
+    --cyan: #00c8ff;
+    --glow: rgba(0, 174, 255, .18);
+    --danger: #e64f63;
+    --green: #28d17c;
+}
+
+
+/* ==========================================================================
+   2. Base
+   ========================================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(circle at 80% -10%, #104b73 0, transparent 34%),
+        radial-gradient(circle at 10% 25%, #07304e 0, transparent 28%),
+        linear-gradient(180deg, #050b14 0%, #07111d 48%, #050b14 100%);
+    color: var(--text);
+    font: 15px Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* ==========================================================================
+   3. Cabeçalho e navegação
+   ========================================================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(4, 10, 18, .92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 200, 255, .18);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, .3);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: auto;
+    min-height: 82px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo strong {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0 0 25px rgba(0, 174, 255, .3);
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+nav {
+    display: flex;
+    gap: 5px;
+    flex: 1;
+}
+
+nav a,
+.actions a {
+    color: #a7b8c9;
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: .2s;
+}
+
+nav a:hover,
+.actions a:hover {
+    color: #fff;
+    background: rgba(0, 174, 255, .09);
+    box-shadow: inset 0 0 0 1px rgba(0, 200, 255, .08);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.cart-link {
+    border: 1px solid var(--line) !important;
+    background: var(--panel) !important;
+    color: #fff !important;
+}
+
+
+/* ==========================================================================
+   4. Botões e etiquetas
+   ========================================================================== */
+
+.tag,
+.section-tag {
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;
+    padding: 0 19px;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+    margin: 4px 3px;
+    box-shadow: 0 8px 24px rgba(0, 140, 255, .18);
+    transition: .2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+.btn.secondary {
+    background: rgba(8, 23, 40, .7);
+    border-color: var(--line);
+    box-shadow: none;
+}
+
+.btn.danger {
+    background: var(--danger);
+}
+
+.btn.small {
+    min-height: 36px;
+    padding: 0 13px;
+    font-size: 13px;
+}
+
+
+/* ==========================================================================
+   5. Container, seções e cartões
+   ========================================================================== */
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 46px 24px 80px;
+}
+
+.section {
+    margin-top: 72px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 22px;
+}
+
+.section-title h2,
+.page-header h1 {
+    font-size: 34px;
+    letter-spacing: -.5px;
+}
+
+.section-title a {
+    color: var(--cyan);
+    font-weight: bold;
+}
+
+.section-title p {
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card,
+.form-card,
+.empty,
+.builder-row,
+.stat-card {
+    background: linear-gradient(145deg, rgba(14, 29, 48, .97), rgba(7, 17, 29, .97));
+    border: 1px solid rgba(27, 53, 80, .95);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, .2), inset 0 1px 0 rgba(255, 255, 255, .025);
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 200, 255, .38);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .32), 0 0 28px rgba(0, 174, 255, .06);
+}
+
+.card p,
+.page-header p,
+.form-card p,
+.builder-row small {
+    color: var(--muted);
+    margin: 7px 0;
+    line-height: 1.5;
+}
+
+.card strong {
+    display: block;
+    font-size: 20px;
+    margin: 13px 0;
+}
+
+.image-placeholder {
+    height: 200px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% 35%, #0d80ae, #071827 63%);
+    color: #dff9ff;
+    font-size: 35px;
+    font-weight: 900;
+    border: 1px solid rgba(0, 200, 255, .15);
+    box-shadow: inset 0 0 35px rgba(0, 200, 255, .08);
+}
+
+.pc-icon {
+    font-size: 55px;
+    filter: drop-shadow(0 0 15px rgba(0, 200, 255, .5));
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 22px;
+    box-sizing: border-box;
+}
+
+.small-image .placeholder-img {
+    padding: 6px;
+}
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.search input {
+    max-width: 520px;
+}
+
+
+/* ==========================================================================
+   Hero (página inicial)
+   ========================================================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 510px;
+    padding: 65px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: linear-gradient(120deg, rgba(5, 15, 27, .98), rgba(8, 36, 61, .96));
+    box-shadow: 0 25px 80px rgba(0, 0, 0, .3);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    right: -100px;
+    top: -120px;
+    border-radius: 50%;
+    background: var(--glow);
+    filter: blur(15px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 74px);
+    line-height: .98;
+    letter-spacing: -2px;
+    margin: 14px 0;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+}
+
+.hero p {
+    max-width: 590px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.hero-pc {
+    position: relative;
+    z-index: 2;
+    height: 360px;
+    border: 1px solid rgba(0, 200, 255, .2);
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    background: radial-gradient(circle at 50% 35%, #0b7dad 0, #082c49 27%, #071321 68%);
+    box-shadow: inset 0 0 50px rgba(0, 200, 255, .1), 0 20px 50px rgba(0, 0, 0, .35);
+}
+
+.pc-glow {
+    position: absolute;
+    inset: 25px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 200, 255, .15);
+    box-shadow: 0 0 45px rgba(0, 200, 255, .1);
+}
+
+.hero-pc .fake-case {
+    width: 180px;
+    height: 220px;
+    margin: auto;
+    border: 3px solid #7de9ff;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #132a3e, #050b13);
+    box-shadow: 0 0 35px rgba(0, 200, 255, .35);
+    position: relative;
+}
+
+.fake-case::before {
+    content: "";
+    position: absolute;
+    width: 95px;
+    height: 95px;
+    border: 7px solid #25c9ff;
+    border-radius: 50%;
+    left: 40px;
+    top: 35px;
+    box-shadow: 0 0 25px #00bfff;
+}
+
+.hero-pc strong {
+    font-size: 34px;
+    color: #fff;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.hero-pc small {
+    color: #9fc4dc;
+    position: relative;
+    margin-top: 5px;
+}
+
+
+/* ==========================================================================
+   6. Categorias
+   ========================================================================== */
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.categories a {
+    position: relative;
+    overflow: hidden;
+    padding: 26px;
+    background: linear-gradient(145deg, var(--panel2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    transition: .2s;
+}
+
+.categories a::after {
+    content: "→";
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    color: var(--cyan);
+    font-size: 20px;
+}
+
+.categories a:hover {
+    border-color: #2876a5;
+    transform: translateY(-3px);
+}
+
+.categories strong {
+    display: block;
+    font-size: 17px;
+}
+
+.categories p {
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+
+/* ==========================================================================
+   7. Formulários
+   ========================================================================== */
+
+input,
+select,
+textarea {
+    width: 100%;
+    background: #071423;
+    color: #fff;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 13px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #208ac0;
+    box-shadow: 0 0 0 3px rgba(0, 174, 255, .08);
+}
+
+textarea {
+    min-height: 100px;
+}
+
+.form-page {
+    max-width: 560px;
+    margin: 42px auto;
+}
+
+.form-card form {
+    display: grid;
+    gap: 9px;
+}
+
+.form-card label {
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.alert,
+.success {
+    padding: 12px;
+    border-radius: 9px;
+    margin: 10px 0;
+}
+
+.alert {
+    border: 1px solid var(--danger);
+    background: rgba(230, 79, 99, .08);
+}
+
+.success {
+    border: 1px solid var(--green);
+    background: rgba(40, 209, 124, .07);
+}
+
+
+/* ==========================================================================
+   8. Página de detalhe do produto
+   ========================================================================== */
+
+.detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 30px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+}
+
+.big {
+    height: 500px;
+}
+
+.detail h1 {
+    font-size: 48px;
+    margin: 10px 0;
+}
+
+.detail p {
+    color: var(--muted);
+    margin: 15px 0;
+    line-height: 1.7;
+}
+
+.price {
+    display: block;
+    font-size: 32px;
+    color: var(--cyan);
+}
+
+
+/* ==========================================================================
+   9. Configurador de PC
+   ========================================================================== */
+
+.builder {
+    display: grid;
+    gap: 14px;
+}
+
+.builder-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.builder-row > div {
+    display: grid;
+    gap: 4px;
+}
+
+.builder-row select {
+    max-width: 500px;
+}
+
+
+/* ==========================================================================
+   10. Carrinho
+   ========================================================================== */
+
+.cart {
+    display: grid;
+    gap: 12px;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto auto;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.cart-item p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.small-image {
+    height: 70px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.empty {
+    text-align: center;
+    padding: 70px;
+}
+
+.empty p {
+    color: var(--muted);
+    margin: 10px 0 22px;
+}
+
+/* ------------------------------------------------------------- Chips de filtro */
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--panel);
+    color: #a7b8c9;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.chip small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.chip:hover {
+    border-color: #2876a5;
+    color: #fff;
+}
+
+.chip.active {
+    border-color: var(--cyan);
+    background: rgba(0, 200, 255, .12);
+    color: #fff;
+}
+
+/* -------------------------------------------------------------------- Estoque */
+
+.stock {
+    display: block;
+    margin: 6px 0 10px;
+    color: var(--green);
+    font-size: 13px;
+}
+
+.stock.out {
+    color: var(--danger);
+}
+
+.detail .stock.out {
+    font-size: 15px;
+    margin: 15px 0;
+}
+
+/* ---------------------------------------------------------------- Chamada (CTA) */
+
+.cta {
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: linear-gradient(100deg, #09223a, #0b1625);
+}
+
+.cta h2 {
+    margin: 8px 0;
+}
+
+.cta p {
+    color: var(--muted);
+}
+
+/* ------------------------------------------------------------ Formulários admin */
+
+.form-title {
+    color: var(--cyan);
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.form-card .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.form-card .checkbox input {
+    width: auto;
+    accent-color: var(--cyan);
+}
+
+.row-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* ------------------------------------------------------ Busca com vários campos */
+
+.search select {
+    width: auto;
+    min-width: 165px;
+}
+
+/* ---------------------------------------------------------- Quantidade carrinho */
+
+.qty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty .btn {
+    min-width: 36px;
+    padding: 0 10px;
+}
+
+.qty span {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 800;
+}
+
+
+/* ==========================================================================
+   11. Tabelas e painel administrativo
+   ========================================================================== */
+
+.table-wrapper {
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, .18);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+}
+
+th,
+td {
+    text-align: left;
+    padding: 15px 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+th {
+    color: var(--cyan);
+    background: #0a1a2a;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 35px;
+    margin-top: 5px;
+}
+
+.stat-card span {
+    color: var(--muted);
+}
+
+
+/* ==========================================================================
+   12. Rodapé
+   ========================================================================== */
+
+footer {
+    background: linear-gradient(180deg, #040a12 0%, #03070d 100%);
+    border-top: 1px solid rgba(0, 200, 255, .16);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 48px 24px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-container > div {
+    display: grid;
+    gap: 8px;
+}
+
+.footer-container h3 {
+    font-size: 15px;
+}
+
+.footer-container p,
+.footer-container a {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.footer-container a:hover {
+    color: var(--cyan);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 18px;
+    border-top: 1px solid var(--line);
+    color: #71879c;
+    font-size: 13px;
+}
+
+
+/* ==========================================================================
+   13. Responsivo
+   ========================================================================== */
+
+@media (max-width: 1050px) {
+    nav {
+        display: none;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero,
+    .detail {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-pc {
+        max-width: 600px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        padding: 25px 15px 55px;
+    }
+
+    .hero {
+        padding: 32px 20px;
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero-pc {
+        height: 300px;
+    }
+
+    .grid,
+    .categories,
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .header-container {
+        padding: 12px 15px;
+    }
+
+    .actions a:not(:last-child) {
+        display: none;
+    }
+
+    .builder-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cart-item {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .cart-item .qty,
+    .cart-item strong,
+    .cart-item .btn {
+        grid-column: 2;
+    }
+
+    .cta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search {
+        flex-wrap: wrap;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        align-items: start;
+        gap: 12px;
+        flex-direction: column;
+    }
+}

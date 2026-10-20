@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ff4ff"/>
+      <stop offset="1" stop-color="#0090c8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- torre -->
+    <rect x="128" y="34" width="144" height="222" rx="12" fill="#071827" fill-opacity=".85"/>
+    <!-- painel de vidro -->
+    <rect x="146" y="52" width="108" height="166" rx="8" stroke-width="4" opacity=".8"/>
+    <!-- fans frontais -->
+    <circle cx="200" cy="86" r="24"/>
+    <circle cx="200" cy="86" r="7" stroke-width="4"/>
+    <circle cx="200" cy="146" r="24"/>
+    <circle cx="200" cy="146" r="7" stroke-width="4"/>
+    <!-- slot vertical -->
+    <rect x="146" y="196" width="108" height="14" rx="4" stroke-width="4"/>
+    <!-- power -->
+    <circle cx="200" cy="232" r="9" stroke-width="4"/>
+    <!-- pés -->
+    <path d="M150 256v14M250 256v14" stroke-width="5"/>
+    <!-- airflow -->
+    <path d="M108 70c-14 8-14 30 0 38M108 130c-14 8-14 30 0 38" stroke-width="4" opacity=".6"/>
+    <path d="M292 100c14 8 14 30 0 38" stroke-width="4" opacity=".6"/>
+  </g>
+</svg>

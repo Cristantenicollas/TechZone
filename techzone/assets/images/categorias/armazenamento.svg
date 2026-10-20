@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ff4ff"/>
+      <stop offset="1" stop-color="#0090c8"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- placa M.2 -->
+    <path d="M64 118h272v64H64z" fill="#071827" fill-opacity=".85"/>
+    <!-- entalhe do conector -->
+    <path d="M64 150h-16" stroke-width="7"/>
+    <path d="M48 140v20" stroke-width="7"/>
+    <!-- chips -->
+    <rect x="96" y="132" width="52" height="36" rx="5" stroke-width="5"/>
+    <rect x="168" y="132" width="52" height="36" rx="5" stroke-width="5"/>
+    <rect x="240" y="132" width="52" height="36" rx="5" stroke-width="5"/>
+    <!-- parafuso -->
+    <circle cx="320" cy="150" r="12" stroke-width="5"/>
+    <path d="M314 150h12" stroke-width="4"/>
+    <!-- seta de dados -->
+    <path d="M112 194h60" stroke-width="4" opacity=".8"/>
+    <path d="M164 186l12 8-12 8" stroke-width="4" opacity=".8"/>
+    <!-- linhas de circuito -->
+    <g stroke-width="3" opacity=".6">
+      <path d="M96 210v18h150"/>
+      <path d="M168 228v14"/>
+      <path d="M240 210v10"/>
+    </g>
+    <!-- brilho superior -->
+    <path d="M84 106h180" stroke-width="4" opacity=".5"/>
+  </g>
+</svg>
