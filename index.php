@@ -1,12 +1,12 @@
 <?php
 /**
- * Só existe para o servidor de desenvolvimento.
+ * Só existe para quem abre a raiz do servidor (ex.: http://localhost:8080/
+ * ou http://localhost/ProjetoFinal/). Manda o visitante para a pasta techzone.
  *
- * O TechZone mora em /techzone (BASE_URL), então a raiz do site não tem
- * nada. Sem este arquivo, http://localhost:8080/ responde 404 sem explicação.
- * Aqui a gente manda o visitante para a página inicial.
+ * O caminho é relativo de propósito: funciona em qualquer subpasta, sem
+ * depender de um "/techzone" escrito fixo.
  */
 
-header("Location: /techzone/");
+header("Location: techzone/");
 
 exit;

@@ -287,24 +287,6 @@ nav a:hover,
     margin: 13px 0;
 }
 
-.form-card p.auth-switch {
-    color: #8fa3b8;
-}
-
-.form-card p.auth-switch a {
-    color: var(--cyan);
-    font-weight: 700;
-    text-decoration: none;
-    transition: color .2s, text-shadow .2s;
-}
-
-.form-card p.auth-switch a:hover,
-.form-card p.auth-switch a:focus {
-    color: #1e90ff;
-    text-decoration: underline;
-    text-shadow: 0 0 10px rgba(30, 144, 255, .65);
-}
-
 .image-placeholder {
     height: 200px;
     border-radius: 12px;
