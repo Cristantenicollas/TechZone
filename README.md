@@ -454,7 +454,7 @@ psql -U techzone -h localhost -d techzone -f database/techzone.sql
 | `-U techzone`              | Usuário utilizado para acessar o banco    |
 | `-h localhost`            | Servidor PostgreSQL local                 |
 | `-d techzone`              | Banco de dados que receberá os dados      |
-| `-f database/nortrek.sql` | Arquivo SQL utilizado na restauração      |
+| `-f database/techzone.sql` | Arquivo SQL utilizado na restauração      |
 
 > **Importante:** o banco `techzone` e o usuário `techzone` precisam existir antes da execução do comando.
 
