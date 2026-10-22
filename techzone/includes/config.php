@@ -6,14 +6,17 @@
 
 // ---------------------------------------------------------------- Caminho base
 /**
- * BASE_URL = caminho da pasta "techzone" visto pelo navegador.
+ * BASE_URL = caminho da pasta "techzone" visto pelo NAVEGADOR.
  *
- *   iniciar-servidor.cmd          -> /techzone
- *   XAMPP (htdocs/ProjetoFinal)   -> /ProjetoFinal/techzone
- *   hospedagem (techzone na raiz) -> ""  (vazio)
+ * É calculado a partir do endereço da página aberta (SCRIPT_NAME), e não do
+ * caminho no disco do servidor. Assim funciona em qualquer lugar:
  *
- * Se algum dia o cálculo automático errar, force o valor sem editar o código,
- * definindo a variável de ambiente TECHZONE_BASE_URL (ex.: "/meu-site").
+ *   http://192.168.10.37/ProjetoFinal/techzone/  -> /ProjetoFinal/techzone
+ *   http://localhost:8080/techzone/              -> /techzone
+ *   site com techzone na raiz                    -> ""  (vazio)
+ *
+ * Para forçar um valor sem editar o código, defina a variável de ambiente
+ * TECHZONE_BASE_URL (ex.: "/ProjetoFinal/techzone").
  */
 function calcularBaseUrl(): string
 {
@@ -22,25 +25,14 @@ function calcularBaseUrl(): string
         return rtrim($forcado, "/");
     }
 
-    $raizServidor = realpath($_SERVER["DOCUMENT_ROOT"] ?? "") ?: "";
-    $raizProjeto  = realpath(__DIR__ . "/..") ?: "";
+    // Ex.: /ProjetoFinal/techzone/paginas/produtos.php
+    $script = str_replace("\\", "/", $_SERVER["SCRIPT_NAME"] ?? "");
+    $pasta  = dirname($script);
 
-    $raizServidor = rtrim(str_replace("\\", "/", $raizServidor), "/");
-    $raizProjeto  = rtrim(str_replace("\\", "/", $raizProjeto), "/");
+    // Páginas dentro de subpastas: sobe até a pasta techzone.
+    $pasta = preg_replace('#/(admin|login|paginas|database)$#i', "", $pasta);
 
-    // O projeto precisa estar dentro da raiz do servidor (compara sem diferenciar
-    // maiúsculas só para o caso de "C:\" x "c:\" no Windows).
-    if ($raizServidor !== "" && stripos($raizProjeto, $raizServidor . "/") === 0) {
-        return substr($raizProjeto, strlen($raizServidor));
-    }
-
-    // Projeto na própria raiz do servidor.
-    if ($raizServidor !== "" && strcasecmp($raizProjeto, $raizServidor) === 0) {
-        return "";
-    }
-
-    // Não deu para calcular (ex.: link simbólico): valor padrão.
-    return "/techzone";
+    return rtrim($pasta, "/\\.");
 }
 
 define("BASE_URL", calcularBaseUrl());
