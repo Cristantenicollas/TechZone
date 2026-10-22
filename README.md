@@ -443,7 +443,7 @@ database/techzone.sql
 Com o PostgreSQL instalado e o banco criado, utilize:
 
 ```bash
-psql -U techzone -h localhost -d nortrek -f database/techzone.sql
+psql -U techzone -h localhost -d techzone -f database/techzone.sql
 ```
 
 ### O que o comando faz
@@ -476,7 +476,7 @@ database/techzone.sql
 Estrutura + dados restaurados
 ```
 
-O modelo de documentação do Nortrek também utiliza a abordagem de versionar um dump SQL dentro de `database/` e restaurá-lo através do `psql`, seguindo o mesmo padrão que estamos adotando aqui.
+O modelo de documentação do techzone também utiliza a abordagem de versionar um dump SQL dentro de `database/` e restaurá-lo através do `psql`, seguindo o mesmo padrão que estamos adotando aqui.
 
 ---
 
