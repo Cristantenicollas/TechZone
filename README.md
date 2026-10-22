@@ -1,59 +1,263 @@
-# 🖥️ TechZone
+# 🖥️ TechZone — Documentação Técnica
 
-### 🛒 E-commerce de hardware e tecnologia
+> 🛒 Sistema web de e-commerce para venda de componentes e equipamentos de informática.
 
-A **TechZone** é uma aplicação web de e-commerce desenvolvida para simular uma loja virtual especializada em **componentes, peças e equipamentos para computadores**.
+A **TechZone** é uma aplicação web desenvolvida em PHP para simular o funcionamento de uma loja virtual especializada em hardware e tecnologia.
 
-O sistema permite que usuários criem suas contas, façam login, naveguem pelos produtos, adicionem itens ao carrinho, realizem pedidos e montem configurações personalizadas de computador.
-
-A aplicação também possui uma **área administrativa**, responsável pelo gerenciamento dos produtos, categorias, usuários e pedidos.
+O sistema possui área pública para clientes, autenticação de usuários, catálogo de produtos, categorias, carrinho de compras, checkout, pedidos e um painel administrativo para gerenciamento das informações da loja.
 
 ---
 
-## 📌 Sobre o projeto
+## 📑 Sumário
 
-A TechZone foi desenvolvida como um projeto acadêmico com o objetivo de aplicar, na prática, conceitos de:
-
-- Desenvolvimento web;
-- PHP;
-- HTML5 e CSS3;
-- Banco de dados relacional;
-- PostgreSQL;
-- Autenticação e sessões;
-- CRUD;
-- Relacionamento entre tabelas;
-- Controle de acesso;
-- Organização e modularização de código.
-
-A aplicação foi construída buscando representar o funcionamento básico de uma loja virtual real, desde a apresentação dos produtos até o registro dos pedidos.
-
----
-
-# 🚀 Funcionalidades
-
-## 👤 Sistema de usuários
-
-O sistema possui autenticação de usuários através de sessões.
-
-### Cadastro
-
-Permite que novos usuários criem uma conta para utilizar as funcionalidades que exigem autenticação.
-
-### Login
-
-O usuário pode acessar sua conta através de e-mail e senha.
-
-Após o login, a aplicação utiliza a sessão para identificar o usuário durante sua navegação.
-
-### Logout
-
-Permite encerrar a sessão do usuário com segurança.
+1. [Visão geral do projeto](#-1-visão-geral-do-projeto)
+2. [Tecnologias utilizadas](#-2-tecnologias-utilizadas)
+3. [Estrutura do projeto](#-3-estrutura-do-projeto)
+4. [Arquitetura e fluxo do sistema](#-4-arquitetura-e-fluxo-do-sistema)
+5. [Funcionalidades](#-5-funcionalidades)
+6. [Banco de dados](#-6-banco-de-dados)
+7. [Dump e restauração do banco](#-7-dump-e-restauração-do-banco)
+8. [Configuração](#-8-configuração)
+9. [Como executar o projeto](#-9-como-executar-o-projeto)
+10. [Segurança](#-10-segurança)
+11. [Controle de acesso](#-11-controle-de-acesso)
+12. [Testes recomendados](#-12-testes-recomendados)
+13. [Conceitos aplicados](#-13-conceitos-aplicados)
+14. [Possíveis melhorias](#-14-possíveis-melhorias)
+15. [Desenvolvedor](#-15-desenvolvedor)
 
 ---
 
-## 🛍️ Catálogo de produtos
+# 1. Visão geral do projeto
 
-Os produtos são carregados dinamicamente a partir do banco de dados.
+## 1.1 Objetivo
+
+A TechZone foi desenvolvida com o objetivo de criar uma aplicação de e-commerce funcional, aplicando conceitos de desenvolvimento web, programação em PHP, banco de dados relacional, autenticação, sessões, CRUD e organização modular.
+
+O sistema permite que um visitante navegue pelos produtos e que usuários cadastrados realizem compras através do carrinho e do checkout.
+
+Além disso, existe uma área administrativa responsável pelo gerenciamento dos principais dados da plataforma.
+
+---
+
+## 1.2 Principais funcionalidades
+
+### Área do cliente
+
+- Cadastro de usuário;
+- Login;
+- Logout;
+- Autenticação através de sessões;
+- Visualização de produtos;
+- Visualização de categorias;
+- Carrinho de compras;
+- Alteração de quantidade;
+- Remoção de produtos do carrinho;
+- Checkout;
+- Criação de pedidos;
+- Consulta das informações relacionadas à compra.
+
+### Área administrativa
+
+- Login administrativo;
+- Gerenciamento de usuários;
+- Gerenciamento de produtos;
+- Gerenciamento de categorias;
+- Gerenciamento de pedidos;
+- Cadastro de registros;
+- Consulta de registros;
+- Atualização de registros;
+- Exclusão de registros;
+- Controle de permissões.
+
+### Montador de PC
+
+A aplicação também possui um **Montador de PC**, permitindo selecionar componentes disponíveis na loja para montar uma configuração personalizada.
+
+---
+
+# 2. Tecnologias utilizadas
+
+| Camada             | Tecnologia       |
+| ------------------ | ---------------- |
+| Back-end           | PHP              |
+| Front-end          | HTML5 + CSS3     |
+| Banco de dados     | PostgreSQL       |
+| Acesso ao banco    | PDO / PostgreSQL |
+| Servidor web       | Apache           |
+| Controle de versão | Git / GitHub     |
+| Autenticação       | Sessões PHP      |
+
+A aplicação utiliza PHP para processamento das requisições, autenticação, gerenciamento de sessões, comunicação com o banco de dados, carrinho, pedidos e funcionalidades administrativas.
+
+O HTML5 é utilizado na estrutura das páginas e o CSS3 na criação do layout e estilização da interface.
+
+---
+
+# 3. Estrutura do projeto
+
+A estrutura principal do repositório é organizada da seguinte maneira:
+
+```text
+ProjetoFinal/
+│
+├── index.php
+├── README.md
+│
+└── techzone/
+    │
+    ├── admin/
+    │   └── Painel administrativo
+    │
+    ├── database/
+    │   ├── techzone.sql
+    │   └── migrar-para-postgres.php
+    │
+    ├── includes/
+    │   ├── config.php
+    │   ├── conexao.php
+    │   ├── functions.php
+    │   ├── header.php
+    │   └── footer.php
+    │
+    ├── login/
+    │   ├── login.php
+    │   ├── cadastro.php
+    │   └── logout.php
+    │
+    ├── paginas/
+    │   ├── produtos.php
+    │   ├── carrinho.php
+    │   ├── checkout.php
+    │   └── monte_pc.php
+    │
+    └── style/
+        └── style.css
+```
+
+A estrutura acima corresponde à organização apresentada atualmente no repositório da TechZone.
+
+---
+
+## 3.1 Principais diretórios
+
+### `admin/`
+
+Contém os recursos relacionados à área administrativa da aplicação.
+
+### `database/`
+
+Contém os arquivos relacionados ao banco de dados, incluindo o dump SQL.
+
+```text
+database/
+├── techzone.sql
+└── migrar-para-postgres.php
+```
+
+### `includes/`
+
+Concentra arquivos compartilhados pela aplicação.
+
+```text
+includes/
+├── config.php
+├── conexao.php
+├── functions.php
+├── header.php
+└── footer.php
+```
+
+### `login/`
+
+Responsável pelas funcionalidades de autenticação.
+
+```text
+login/
+├── login.php
+├── cadastro.php
+└── logout.php
+```
+
+### `paginas/`
+
+Contém as principais páginas da aplicação.
+
+```text
+paginas/
+├── produtos.php
+├── carrinho.php
+├── checkout.php
+└── monte_pc.php
+```
+
+### `style/`
+
+Contém os arquivos responsáveis pela estilização da aplicação.
+
+---
+
+# 4. Arquitetura e fluxo do sistema
+
+A arquitetura da aplicação pode ser representada de forma simplificada:
+
+```text
+┌──────────────────────┐
+│       Usuário        │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│    Interface Web     │
+│     PHP / HTML /     │
+│        CSS           │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ Lógica da aplicação  │
+│      functions.php   │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│      conexao.php     │
+│        PDO/PGSQL     │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│      PostgreSQL      │
+└──────────────────────┘
+```
+
+O fluxo geral segue a comunicação entre a interface, as regras da aplicação, a conexão com o banco e o PostgreSQL.
+
+---
+
+# 5. Funcionalidades
+
+## 5.1 Cadastro e login
+
+O usuário pode criar uma conta através da página de cadastro.
+
+Após o cadastro, pode realizar login para acessar funcionalidades que exigem autenticação.
+
+A aplicação utiliza sessões PHP para manter o usuário autenticado durante a navegação.
+
+Exemplo:
+
+```php
+session_start();
+```
+
+As informações da sessão são utilizadas para identificar o usuário conectado.
+
+---
+
+## 5.2 Catálogo de produtos
+
+Os produtos são armazenados no banco de dados e apresentados dinamicamente pela aplicação.
 
 Cada produto pode possuir informações como:
 
@@ -64,54 +268,57 @@ Cada produto pode possuir informações como:
 - Imagem;
 - Categoria.
 
-A utilização do banco de dados permite adicionar e alterar produtos sem precisar modificar diretamente o código das páginas.
+A utilização do banco de dados permite gerenciar os produtos sem precisar alterar manualmente o código das páginas.
 
 ---
 
-## 📦 Categorias
+## 5.3 Categorias
 
-Os produtos são organizados através de categorias, facilitando a organização do catálogo.
+Os produtos são organizados através de categorias.
 
-Entre os tipos de produtos trabalhados pelo projeto estão componentes e peças de computador, como:
-
-- Processadores;
-- Placas de vídeo;
-- Memórias;
-- Componentes de hardware;
-- Outros equipamentos de informática.
+Isso facilita a organização do catálogo e permite separar os diferentes tipos de componentes e equipamentos disponíveis.
 
 ---
 
-# 🛒 Carrinho de compras
+## 5.4 Carrinho
 
-A TechZone possui um carrinho de compras baseado em **sessões do PHP**.
+O carrinho utiliza a sessão do PHP para manter os produtos selecionados pelo usuário.
 
 O usuário pode:
 
 - Adicionar produtos;
-- Definir quantidades;
-- Adicionar novamente produtos já presentes no carrinho;
-- Visualizar os produtos selecionados;
 - Alterar quantidades;
 - Remover produtos;
-- Continuar navegando pela loja;
+- Visualizar os produtos selecionados;
+- Continuar comprando;
 - Avançar para o checkout.
 
-Os produtos selecionados ficam armazenados na sessão enquanto o usuário navega pelo sistema.
+Fluxo:
 
-Exemplo da estrutura utilizada:
-
-```php
-$_SESSION['carrinho']
+```text
+Produto
+   │
+   ▼
+Adicionar ao carrinho
+   │
+   ▼
+Carrinho
+   │
+   ├── Alterar quantidade
+   │
+   ├── Remover produto
+   │
+   ▼
+Checkout
 ```
 
 ---
 
-# 💳 Checkout e pedidos
+## 5.5 Checkout e pedidos
 
-Depois de adicionar os produtos ao carrinho, o usuário pode avançar para o checkout e finalizar o pedido.
+Após selecionar os produtos, o usuário pode avançar para o checkout.
 
-O sistema mantém o relacionamento entre:
+O pedido relaciona o usuário aos produtos adquiridos.
 
 ```text
 Usuário
@@ -126,280 +333,224 @@ Itens do pedido
 Produtos
 ```
 
-Dessa forma, um pedido pode possuir diversos produtos e cada produto pode fazer parte de diferentes pedidos.
-
-Os itens do pedido armazenam informações importantes, como:
-
-- Produto;
-- Pedido;
-- Quantidade;
-- Preço unitário no momento da compra.
-
-Guardar o preço no momento da compra permite manter o valor original mesmo que o preço atual do produto seja alterado posteriormente.
+Cada item do pedido representa um produto e sua respectiva quantidade.
 
 ---
 
-# 🖥️ Montador de PC
+## 5.6 Montador de PC
 
-A TechZone possui um **Montador de PC**, desenvolvido para permitir que o usuário monte uma configuração de computador utilizando os componentes disponíveis na loja.
+O Montador de PC permite que o usuário selecione componentes para montar uma configuração personalizada.
 
-A funcionalidade centraliza a escolha das peças em uma única interface, proporcionando uma experiência mais próxima de uma loja especializada em hardware.
+O objetivo é centralizar a seleção das peças em uma única interface.
+
+Fluxo:
+
+```text
+Montador de PC
+      │
+      ├── Processador
+      ├── Placa de vídeo
+      ├── Memória
+      ├── Outros componentes
+      │
+      ▼
+Configuração final
+```
 
 ---
 
-# 👨‍💼 Painel administrativo
+## 5.7 Painel administrativo
 
-A aplicação possui uma área administrativa separada da área destinada aos clientes.
+O painel administrativo é responsável pelo gerenciamento das informações da loja.
 
-O administrador pode gerenciar os principais dados do sistema, incluindo:
+As operações incluem:
+
+- Criar;
+- Consultar;
+- Atualizar;
+- Excluir.
+
+Essas operações correspondem ao conceito de **CRUD**.
+
+---
+
+# 6. Banco de dados
+
+A TechZone utiliza **PostgreSQL** como banco de dados.
+
+O banco armazena as principais informações necessárias para o funcionamento da aplicação.
+
+Entre elas:
 
 - Usuários;
-- Produtos;
 - Categorias;
-- Pedidos.
+- Produtos;
+- Pedidos;
+- Itens dos pedidos.
 
-Também estão disponíveis operações de:
-
-- Cadastro;
-- Consulta;
-- Edição;
-- Exclusão.
-
-O acesso ao painel administrativo é protegido através do sistema de autenticação e permissões.
+A aplicação utiliza uma conexão através do PDO para realizar as operações com o PostgreSQL.
 
 ---
 
-# 🔄 CRUD
+## 6.1 Relacionamento dos dados
 
-A área administrativa utiliza o conceito de **CRUD**:
-
-| Operação | Significado | Aplicação |
-|---|---|---|
-| **Create** | Criar | Cadastro de registros |
-| **Read** | Consultar | Visualização dos dados |
-| **Update** | Atualizar | Edição de registros |
-| **Delete** | Excluir | Remoção de registros |
-
-Essas operações são utilizadas principalmente no gerenciamento dos dados da loja.
-
----
-
-# 🗄️ Banco de dados
-
-O projeto utiliza um banco de dados relacional para armazenar as informações da aplicação.
-
-A estrutura principal possui entidades relacionadas entre si, como:
+A estrutura pode ser representada de forma simplificada:
 
 ```text
-Usuários
-   │
-   └────── Pedidos
-              │
-              └────── Itens do pedido
-                           │
-                           └────── Produtos
-                                      │
-                                      └────── Categorias
+┌──────────────┐
+│   Usuários   │
+└──────┬───────┘
+       │
+       │ 1:N
+       ▼
+┌──────────────┐
+│   Pedidos    │
+└──────┬───────┘
+       │
+       │ 1:N
+       ▼
+┌──────────────────┐
+│ Itens do pedido  │
+└────────┬─────────┘
+         │
+         │ N:1
+         ▼
+┌──────────────┐
+│   Produtos   │
+└──────┬───────┘
+       │
+       │ N:1
+       ▼
+┌──────────────┐
+│  Categorias  │
+└──────────────┘
 ```
-
-### Principais tabelas
-
-#### `usuarios`
-
-Armazena os usuários cadastrados e suas informações de acesso.
-
-#### `categorias`
-
-Armazena as categorias utilizadas para organizar os produtos.
-
-#### `produtos`
-
-Armazena os produtos disponíveis na loja.
-
-Entre os dados armazenados estão:
-
-- Nome;
-- Descrição;
-- Preço;
-- Estoque;
-- Imagem;
-- Categoria.
-
-#### `pedidos`
-
-Registra as compras realizadas pelos usuários.
-
-Entre as informações estão:
-
-- ID do pedido;
-- Usuário;
-- Data;
-- Status;
-- Valor total.
-
-#### `itens_pedido`
-
-Relaciona os pedidos aos produtos adquiridos.
-
-Armazena informações como:
-
-- Pedido;
-- Produto;
-- Quantidade;
-- Preço unitário.
 
 ---
 
-# 🔐 Segurança e autenticação
+# 7. Dump e restauração do banco
 
-O sistema utiliza sessões do PHP para controlar usuários autenticados.
+O projeto utiliza um arquivo SQL para permitir a restauração da estrutura e dos dados do banco.
 
-As áreas protegidas verificam se existe uma sessão válida antes de permitir o acesso.
+O dump está localizado em:
 
-Também são utilizados conceitos como:
+```text
+database/techzone.sql
+```
 
-- Controle de sessões;
-- Restrição de acesso;
-- Controle de permissões;
-- Hash de senhas;
-- Separação entre área pública e administrativa;
-- Validação de acesso.
+### Restauração
 
-Exemplo de controle de sessão:
+Com o PostgreSQL instalado e o banco criado, utilize:
+
+```bash
+psql -U techzone -h localhost -d nortrek -f database/techzone.sql
+```
+
+### O que o comando faz
+
+| Parâmetro                 | Função                                    |
+| ------------------------- | ----------------------------------------- |
+| `psql`                    | Cliente de linha de comando do PostgreSQL |
+| `-U techzone`              | Usuário utilizado para acessar o banco    |
+| `-h localhost`            | Servidor PostgreSQL local                 |
+| `-d techzone`              | Banco de dados que receberá os dados      |
+| `-f database/nortrek.sql` | Arquivo SQL utilizado na restauração      |
+
+> **Importante:** o banco `techzone` e o usuário `techzone` precisam existir antes da execução do comando.
+
+### Exemplo
+
+```text
+PostgreSQL
+    │
+    ▼
+Banco: techzone
+    │
+    ▼
+psql
+    │
+    ▼
+database/techzone.sql
+    │
+    ▼
+Estrutura + dados restaurados
+```
+
+O modelo de documentação do Nortrek também utiliza a abordagem de versionar um dump SQL dentro de `database/` e restaurá-lo através do `psql`, seguindo o mesmo padrão que estamos adotando aqui.
+
+---
+
+# 8. Configuração
+
+## 8.1 Configuração da aplicação
+
+As principais configurações ficam em:
+
+```text
+techzone/includes/config.php
+```
+
+Entre as configurações estão:
+
+- Caminho base da aplicação;
+- Host do banco;
+- Porta;
+- Nome do banco;
+- Usuário;
+- Senha.
+
+Exemplo de caminho base:
 
 ```php
-session_start();
-
-if (!isset($_SESSION['usuario_id'])) {
-    header('Location: ../login/login.php');
-    exit;
-}
+define("BASE_URL", "/techzone");
 ```
 
-A aplicação diferencia usuários comuns de usuários com permissões administrativas.
+O valor deve ser ajustado de acordo com o local onde a aplicação estiver instalada.
 
 ---
 
-# 🧩 Organização do projeto
+## 8.2 Configuração do banco
 
-A estrutura principal do repositório é organizada da seguinte maneira:
+A conexão deve ser configurada de acordo com o ambiente utilizado.
+
+Exemplo:
 
 ```text
-TechZone/
-│
-├── techzone/
-│   ├── admin/
-│   │   └── Área administrativa
-│   │
-│   ├── database/
-│   │   ├── techzone.sql
-│   │   └── migrar-para-postgres.php
-│   │
-│   ├── includes/
-│   │   ├── config.php
-│   │   ├── conexao.php
-│   │   ├── functions.php
-│   │   ├── header.php
-│   │   └── footer.php
-│   │
-│   ├── login/
-│   │   ├── login.php
-│   │   ├── cadastro.php
-│   │   └── logout.php
-│   │
-│   ├── paginas/
-│   │   ├── produtos.php
-│   │   ├── carrinho.php
-│   │   ├── checkout.php
-│   │   └── monte_pc.php
-│   │
-│   └── style/
-│       └── style.css
-│
-├── index.php
-└── README.md
+Host: localhost
+Porta: 5432
+Banco: techzone
+Usuário: techzone
+Senha: sua_senha
 ```
 
-Essa estrutura separa as principais responsabilidades da aplicação, facilitando a manutenção e a organização do código.
+> Utilize os valores correspondentes ao ambiente em que a TechZone estiver sendo executada.
 
 ---
 
-# 🧱 Modularização
+# 9. Como executar o projeto
 
-O projeto utiliza arquivos compartilhados para evitar repetição de código.
+## 9.1 Requisitos
 
-### `config.php`
-
-Centraliza configurações da aplicação, como caminho base e informações utilizadas na conexão.
-
-### `conexao.php`
-
-Responsável pela conexão da aplicação com o banco de dados.
-
-### `functions.php`
-
-Concentra funções auxiliares utilizadas em diferentes partes do sistema.
-
-### `header.php`
-
-Centraliza elementos comuns presentes no início das páginas.
-
-### `footer.php`
-
-Centraliza elementos comuns presentes no final das páginas.
-
-Essa organização facilita alterações futuras e evita duplicação de código.
-
----
-
-# 🎨 Interface
-
-A interface da TechZone utiliza:
-
-- **HTML5** para estrutura;
-- **CSS3** para estilização;
-- **PHP** para geração dinâmica dos conteúdos.
-
-O estilo global da aplicação é centralizado no arquivo:
-
-```text
-techzone/style/style.css
-```
-
-Isso permite manter uma identidade visual consistente entre as diferentes páginas do sistema.
-
----
-
-# ⚙️ Tecnologias utilizadas
-
-| Tecnologia | Utilização |
-|---|---|
-| **PHP** | Backend e lógica da aplicação |
-| **HTML5** | Estrutura das páginas |
-| **CSS3** | Interface e estilização |
-| **PostgreSQL** | Banco de dados |
-| **Git** | Controle de versão |
-| **Apache** | Servidor web local |
-
----
-
-# 💻 Como executar
-
-## 1. Requisitos
-
-Para executar a TechZone localmente, você precisará de:
+Para executar a TechZone, é necessário possuir:
 
 - PHP;
 - PostgreSQL;
-- Apache ou outro servidor compatível com PHP;
+- Apache ou servidor web compatível;
+- Extensão PostgreSQL do PHP;
 - Git;
-- Navegador.
+- Navegador web.
 
 ---
 
-## 2. Clonar o repositório
+## 9.2 Clonar o repositório
 
-Clone o repositório oficial:
+O repositório oficial é:
+
+```text
+https://github.com/Cristantenicollas/TechZone
+```
+
+Clone utilizando:
 
 ```bash
 git clone https://github.com/Cristantenicollas/TechZone.git
@@ -411,72 +562,69 @@ Entre na pasta:
 cd TechZone
 ```
 
-> O repositório atual é `TechZone`. A referência antiga a `ProjetoFinal` não deve mais ser utilizada.
+> `ProjetoFinal` é apenas o nome utilizado no caminho do ambiente onde a aplicação está hospedada. O repositório atual do GitHub se chama **TechZone**, portanto o comando de clone utiliza `TechZone`. O repositório público atualmente possui `techzone/`, `index.php` e `README.md` em sua raiz.
 
 ---
 
-## 3. Configurar o banco de dados
+## 9.3 Configurar o banco
 
-O projeto possui arquivos relacionados ao banco dentro de:
+Crie o banco PostgreSQL utilizado pela aplicação.
 
-```text
-techzone/database/
+Depois, restaure o dump:
+
+```bash
+psql -U techzone -h localhost -d techzone -f database/techzone.sql
 ```
 
-O arquivo principal de estrutura do banco é:
+> Execute o comando a partir do diretório em que a pasta `database/` está localizada.
 
-```text
-techzone/database/techzone.sql
+Se o arquivo estiver dentro de `techzone/database/`, execute:
+
+```bash
+psql -U techzone -h localhost -d techzone -f techzone/database/techzone.sql
 ```
-
-Crie o banco de dados no PostgreSQL e execute o script SQL para criar as tabelas necessárias.
 
 ---
 
-## 4. Configurar a conexão
+## 9.4 Configurar a conexão
 
-As configurações de conexão ficam nos arquivos dentro de:
-
-```text
-techzone/includes/
-```
-
-Configure de acordo com o seu ambiente:
+Edite:
 
 ```text
-Host
-Porta
-Nome do banco
-Usuário
-Senha
+techzone/includes/config.php
 ```
 
-Também confira a configuração do caminho base da aplicação.
+e/ou:
+
+```text
+techzone/includes/conexao.php
+```
+
+Configure as credenciais correspondentes ao PostgreSQL do ambiente.
+
+---
+
+## 9.5 Configurar o Apache
+
+Coloque o projeto dentro do diretório utilizado pelo Apache.
 
 Exemplo:
 
-```php
-define("BASE_URL", "/techzone");
-```
-
----
-
-## 5. Executar a aplicação
-
-Coloque o projeto no diretório utilizado pelo seu servidor web.
-
-Por exemplo:
-
 ```text
-htdocs/
+/var/www/html/
 └── TechZone/
     ├── index.php
+    ├── README.md
     └── techzone/
 ```
 
-Inicie o Apache e o PostgreSQL.
+Depois, inicie o Apache e o PostgreSQL.
 
-Depois, acesse o endereço correspondente ao local onde o projeto foi instalado.
+---
+
+## 9.6 Acessar a aplicação
+
+Depois de iniciar os serviços, abra a aplicação pelo navegador.
 
 Exemplo:
 
@@ -484,76 +632,110 @@ Exemplo:
 http://localhost/TechZone/
 ```
 
+Caso o projeto esteja hospedado em outro servidor, utilize o endereço correspondente ao ambiente.
+
 ---
 
-# 🔁 Fluxo principal
+# 10. Segurança
 
-O funcionamento básico da aplicação pode ser representado da seguinte maneira:
+A aplicação utiliza mecanismos básicos de segurança para controle dos usuários.
 
-```text
-                  INÍCIO
-                     │
-                     ▼
-              Página inicial
-                     │
-             ┌───────┴───────┐
-             │               │
-             ▼               ▼
-         Produtos          Login
-             │               │
-             ▼               ▼
-     Detalhes do produto   Cadastro
-             │
-             ▼
-       Adicionar ao
-         carrinho
-             │
-             ▼
-          Carrinho
-             │
-             ▼
-          Checkout
-             │
-             ▼
-        Criar pedido
-             │
-             ▼
-         Finalização
+Entre eles:
+
+- Sessões PHP;
+- Controle de autenticação;
+- Restrição da área administrativa;
+- Controle de permissões;
+- Hash de senhas;
+- Separação entre área pública e administrativa;
+- Validação de acesso.
+
+A autenticação utiliza:
+
+```php
+$_SESSION
 ```
 
 ---
 
-# 👨‍💼 Fluxo administrativo
+# 11. Controle de acesso
+
+A aplicação diferencia usuários comuns de usuários administrativos.
+
+De forma simplificada:
 
 ```text
-       Login administrativo
-                │
-                ▼
-       Verificação de acesso
-                │
-                ▼
-          Painel Admin
-                │
-       ┌────────┼────────┐
-       │        │        │
-       ▼        ▼        ▼
-   Produtos Categorias Usuários
-       │
-       ▼
-    Pedidos
+                    Usuário
+                       │
+                       ▼
+                    Login
+                       │
+             ┌─────────┴─────────┐
+             │                   │
+             ▼                   ▼
+          Cliente             Admin
+             │                   │
+             ▼                   ▼
+       Área da loja       Painel administrativo
 ```
+
+Usuários sem permissão administrativa não devem conseguir acessar diretamente funcionalidades restritas ao administrador.
 
 ---
 
-# 📚 Conceitos aplicados
+# 12. Testes recomendados
 
-Durante o desenvolvimento foram utilizados conceitos de:
+## Usuário
+
+- [ ] Criar uma conta;
+- [ ] Realizar login;
+- [ ] Realizar logout;
+- [ ] Visualizar produtos;
+- [ ] Visualizar categorias;
+- [ ] Adicionar produto ao carrinho;
+- [ ] Alterar quantidade;
+- [ ] Remover produto;
+- [ ] Realizar checkout;
+- [ ] Criar pedido.
+
+## Administrador
+
+- [ ] Realizar login administrativo;
+- [ ] Cadastrar produto;
+- [ ] Consultar produto;
+- [ ] Editar produto;
+- [ ] Excluir produto;
+- [ ] Cadastrar categoria;
+- [ ] Editar categoria;
+- [ ] Excluir categoria;
+- [ ] Consultar usuários;
+- [ ] Consultar pedidos;
+- [ ] Verificar controle de acesso.
+
+## Banco de dados
+
+- [ ] Criar banco PostgreSQL;
+- [ ] Restaurar o dump;
+- [ ] Verificar as tabelas;
+- [ ] Verificar os relacionamentos;
+- [ ] Testar conexão PHP/PostgreSQL;
+- [ ] Testar inserção e consulta de dados.
+
+---
+
+# 13. Conceitos aplicados
+
+Durante o desenvolvimento foram aplicados conceitos de:
 
 - Programação em PHP;
+- Programação procedural;
 - Desenvolvimento web;
+- HTML5;
+- CSS3;
 - CRUD;
 - Banco de dados relacional;
 - PostgreSQL;
+- PDO;
 - Chaves primárias;
 - Chaves estrangeiras;
 - Relacionamentos entre tabelas;
@@ -564,83 +746,44 @@ Durante o desenvolvimento foram utilizados conceitos de:
 - Manipulação de formulários;
 - Processamento de dados;
 - HTML dinâmico;
-- CSS;
 - Modularização;
+- Separação de responsabilidades;
 - E-commerce;
 - Gerenciamento de estoque;
 - Gerenciamento de pedidos.
 
 ---
 
-# 🧪 Testes recomendados
+# 14. Possíveis melhorias
 
-Após configurar e executar o sistema, recomenda-se testar:
+Algumas funcionalidades podem ser adicionadas em versões futuras:
 
-### Usuário
-
-- [ ] Cadastro
-- [ ] Login
-- [ ] Logout
-- [ ] Visualização de produtos
-- [ ] Adição ao carrinho
-- [ ] Alteração de quantidade
-- [ ] Remoção do carrinho
-- [ ] Checkout
-- [ ] Criação de pedido
-
-### Administrador
-
-- [ ] Login administrativo
-- [ ] Cadastro de produtos
-- [ ] Edição de produtos
-- [ ] Exclusão de produtos
-- [ ] Cadastro de categorias
-- [ ] Edição de categorias
-- [ ] Exclusão de categorias
-- [ ] Consulta de usuários
-- [ ] Consulta de pedidos
-
-### Montador
-
-- [ ] Seleção de componentes
-- [ ] Montagem da configuração
-- [ ] Verificação dos produtos selecionados
-
----
-
-# 📈 Melhorias futuras
-
-Algumas funcionalidades que podem ser adicionadas futuramente:
-
-- Sistema de pagamento online;
+- Integração com meios de pagamento;
 - Integração com serviços de frete;
 - Recuperação de senha;
-- Histórico de pedidos;
 - Sistema de favoritos;
 - Avaliação de produtos;
 - Cupons de desconto;
 - Filtros avançados;
-- Verificação automática de compatibilidade no Montador de PC;
+- Melhorias no Montador de PC;
+- Verificação automática de compatibilidade entre componentes;
 - Dashboard administrativo;
-- Gráficos e estatísticas;
+- Gráficos de vendas;
+- Histórico detalhado de pedidos;
 - Melhorias de responsividade.
 
 ---
 
-# 🎓 Objetivo acadêmico
+# 15. Desenvolvedor
 
-A TechZone foi desenvolvida como um projeto acadêmico para aplicar conhecimentos de **programação, desenvolvimento web e banco de dados** em uma aplicação prática.
+## 👨‍💻 Nicollas Cristante Gonçalves
 
-O projeto busca representar uma loja virtual funcional, envolvendo desde a interface do usuário até o gerenciamento de dados, autenticação, carrinho e pedidos.
+Projeto desenvolvido para fins acadêmicos, com foco na aplicação prática de conceitos de desenvolvimento web, banco de dados e programação.
 
----
+### Repositório
 
-# 👨‍💻 Desenvolvedor
-
-**Nicollas Cristante Gonçalves**
-
-🔗 **Repositório:**  
-[GitHub — Cristantenicollas/TechZone](https://github.com/Cristantenicollas/TechZone?utm_source=chatgpt.com)
+🔗 **GitHub:**
+[https://github.com/Cristantenicollas/TechZone](https://github.com/Cristantenicollas/TechZone)
 
 ---
 
